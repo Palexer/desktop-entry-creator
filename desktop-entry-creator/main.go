@@ -23,7 +23,7 @@ type ui struct {
 	categoriesEntry *widget.Entry
 	typeEntry       *widget.Entry
 	commandEntry    *widget.Entry
-	terminalSelect  *widget.Select
+	commentEntry    *widget.Entry
 	iconPathLabel   *widget.Label
 }
 
@@ -35,24 +35,17 @@ func (u *ui) loadMainUI() fyne.CanvasObject {
 	u.commandEntry = widget.NewEntry()
 	u.categoriesEntry = widget.NewEntry()
 	u.typeEntry = widget.NewEntry()
+	u.commentEntry = widget.NewEntry()
 	u.typeEntry.SetText("Application")
-	u.terminalSelect = widget.NewSelect([]string{"true", "false"}, func(s string) {
-		if s == "true" {
-			u.entry.Terminal = true
-		} else {
-			u.entry.Terminal = false
-		}
-	})
-	u.terminalSelect.SetSelected("false")
 
 	form := widget.NewForm(
 		widget.NewFormItem("Name", u.nameEntry),
 		widget.NewFormItem("Icon", widget.NewButtonWithIcon("Open", theme.FolderOpenIcon(), u.openIconDialog)),
 		widget.NewFormItem("Icon Path: ", u.iconPathLabel),
 		widget.NewFormItem("Command", u.commandEntry),
-		widget.NewFormItem("Terminal", u.terminalSelect),
 		widget.NewFormItem("Type", u.typeEntry),
 		widget.NewFormItem("Categories", u.categoriesEntry),
+		widget.NewFormItem("Comment", u.commentEntry),
 	)
 	return widget.NewVBox(
 		form,

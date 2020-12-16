@@ -7,20 +7,20 @@ type desktopEntry struct {
 	Icon       string
 	Type       string
 	Command    string
-	Terminal   bool
 	Categories string
+	Comment    string
 }
 
 func (e *desktopEntry) string() string {
 	if e.Type == "nil" {
 		e.Type = "Application"
 	}
-	return fmt.Sprintf("[Desktop Entry]\nName=%s\nIcon=%s\nType=%s\nExec=%s\nTerminal=%v\nCategories=%v\nVersion=1.0\n",
+	return fmt.Sprintf("[Desktop Entry]\nName=%s\nIcon=%s\nType=%s\nExec=%s\nTerminal=false\nCategories=%v\nComment=%s\nVersion=1.0\n",
 		e.Name,
 		e.Icon,
 		e.Type,
 		e.Command,
-		e.Terminal,
 		e.Categories,
+		e.Comment,
 	)
 }
