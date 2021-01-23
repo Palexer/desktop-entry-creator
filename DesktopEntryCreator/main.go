@@ -6,12 +6,13 @@ import (
 	"os/exec"
 	"strconv"
 
-	"fyne.io/fyne"
-	"fyne.io/fyne/app"
-	"fyne.io/fyne/dialog"
-	"fyne.io/fyne/layout"
-	"fyne.io/fyne/theme"
-	"fyne.io/fyne/widget"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/dialog"
+	"fyne.io/fyne/v2/layout"
+	"fyne.io/fyne/v2/theme"
+	"fyne.io/fyne/v2/widget"
 )
 
 type ui struct {
@@ -47,10 +48,10 @@ func (u *ui) loadMainUI() fyne.CanvasObject {
 		widget.NewFormItem("Categories", u.categoriesEntry),
 		widget.NewFormItem("Comment", u.commentEntry),
 	)
-	return widget.NewVBox(
+	return container.NewVBox(
 		form,
 		layout.NewSpacer(),
-		widget.NewHBox(
+		container.NewHBox(
 			layout.NewSpacer(),
 			widget.NewButtonWithIcon("Save", theme.DocumentSaveIcon(), u.saveEntry),
 		),
